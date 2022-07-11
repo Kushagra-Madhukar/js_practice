@@ -24,3 +24,14 @@ const deepSearcher = (arr, test) => {
 const arrx = [[1, [2, [3, 4, "foo", { a: 1, b: 2 }]], "bar"]];
 console.log(deepSearcher(arrx, (e) => typeof e === "number"));
 console.log(deepSearcher(arrx, (e) => e instanceof Array));
+
+
+// solution 2(bekar)
+const arr = [[[1, 3, 5]], 0, 1, ['hello'], [2, 3]];
+
+const newArr = arr.flat(Infinity);
+let count = 0;
+newArr.forEach(i => {
+  if(typeof i === 'number') count++;
+})
+console.log(count);
