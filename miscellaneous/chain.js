@@ -7,8 +7,7 @@ function chain(arr, linkLength) {
    let chainArr = [];
    let unprocessedArr = [...arr];
    while(unprocessedArr.length) {
-     chainArr.push(unprocessedArr.slice(0, linkLength));
-     unprocessedArr.splice(0, linkLength)
+     chainArr.push(unprocessedArr.splice(0, linkLength));
    }
    return chainArr;
 }
