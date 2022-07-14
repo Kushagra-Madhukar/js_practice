@@ -1,23 +1,3 @@
-//various ways to implement(I prefer 3 & 2)
-//1
-const debounce = (fn, delay) => {
- let timer;
- let flag = true;
- return function() {
-   if(flag) {
-        const context = this;
-        const args = arguments;
-        if(timer) clearTimeout(timer);
-        flag = false;
-        timer = setTimeout(() => {
-            fn.apply(context, args);
-            flag = true;
-        }, delay);
-   }
- }
-}
-
-//2
 const debounce = (fn, delay) => {
  let timer;
  return function() {
@@ -31,7 +11,7 @@ const debounce = (fn, delay) => {
 }
 
 //3
-const debounce = (fn, delay) => {
+const throttle = (fn, delay) => {
  let timer;
  let flag = true;
  return function() {
