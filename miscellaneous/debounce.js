@@ -17,3 +17,10 @@ function debounce(func, delay = 300){
     timer = setTimeout(() => { func.apply(this, args); }, delay);
   };
 }
+
+let debounceTimer;
+ 
+const debounce = (callback, time) => {
+  window.clearTimeout(debounceTimer);
+  debounceTimer = window.setTimeout(callback, time);
+}
