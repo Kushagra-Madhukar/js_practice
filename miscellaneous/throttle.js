@@ -1,5 +1,5 @@
 //various ways to implement
-//1
+//1 => all of its executions will be after a delay of 300ms
 const throttle = (fn, delay) => {
  let timer;
  let flag = true;
@@ -18,7 +18,7 @@ const throttle = (fn, delay) => {
 }
 
 
-//2
+//2 => all of the executions will be immediate but will have to wait 300ms for next execution
 const throttle = (fn, delay) => {
  let timer;
  let flag = true;
@@ -35,3 +35,19 @@ const throttle = (fn, delay) => {
    }
  }
 }
+
+//3
+const throttle = (fn, delay) => {
+ let timer;
+ return function() {
+   if(!timer) {
+        const context = this;
+        const args = arguments;
+        fn.apply(context, args);
+        timer = setTimeout(() => {
+           clearTimeout(timer);
+        }, delay);
+    }
+  }
+}
+
