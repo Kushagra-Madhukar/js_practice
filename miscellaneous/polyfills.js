@@ -47,3 +47,13 @@ Array.prototype.myReduce = function(callback, initalAcc){
    }
    return acc;
 }
+
+Array.prototype.myReduceRight = function(callback, initialVal){
+   let result = initialVal;
+   let arr = this;
+   for(let i=arr.length-1;i>=0;i--){
+       if(result !== undefined) result = callback(result, arr[i], i, arr);
+       else result = arr[i];
+   }
+   return result;
+}
