@@ -10,13 +10,14 @@ const sumFunc = (...num1s) => {
   const outer = arrSum(num1s);
   return function(...num2s) {
     const inner = arrSum(num2s);
-    return inner ? sumFunc(outer+inner) : outer;
+    return (num2s && num2s.length) ? sumFunc(outer+inner) : outer;
   }
 }
 function pC(val, identifier = ''){
   console.log(val, identifier);
 }
-pC(sumFunc(4, 2)(5)(9, 80)());
+pC(sumFunc(4, 2)(5)(9, 80)(), 'should be 100');
+pC(sumFunc(4, 2)(0)(9, 80)(), 'should be 95');
 
 //However if you only need it for sum of numbers and won't pass more than 1 number in each function call, you can use
 const sumFunc2 = a => b => b ? sumFunc2(a+b) : a;
